@@ -29,7 +29,7 @@ config: { //中间件配置
         filter: [], // (function | array) - filter files at init dir, for example - skip non build (source) files. If array set - allow only listed files
         maxAge: 3600 * 24 * 7, // cache control max age for the files, 0 by default.
         preload: false, // caches the assets on initialization or not, default to true. always work together with options.dynamic.
-        cache: false // dynamic load file which not cached on initialization.
+        dynamic: false // dynamic load file which not cached on initialization.
     }
 }
 ```

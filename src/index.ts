@@ -2,7 +2,7 @@
  * @Author: richen
  * @Date: 2020-12-16 19:51:00
  * @LastEditors: linyyyang<linyyyang@tencent.com>
- * @LastEditTime: 2020-12-16 20:09:01
+ * @LastEditTime: 2020-12-17 19:19:46
  * @License: BSD (3-Clause)
  * @Copyright (c) - <richenlin(at)gmail.com>
  */
@@ -48,26 +48,28 @@ const defaultOptions: OptionsInterface = {
     cache: false // dynamic load file which not cached on initialization.
 };
 
-export function Static(options: any, app: any) {
-    options = options ? lib.extend(defaultOptions, options, true) : defaultOptions;
+export function Static(options: OptionsInterface, app: any) {
+    options = { ...defaultOptions, ...options };
     // static path
     if (options.dir === '/' || options.dir === '') {
         options.dir = '/static';
     }
+
+    const opt: any = {
+        dir: path.join(app.rootPath || process.env.ROOT_PATH || '', options.dir),
+        prefix: options.prefix,
+        alias: options.alias,
+        gzip: options.gzip,
+        usePrecompiledGzip: options.usePrecompiledGzip,
+        maxAge: options.maxAge,
+        dynamic: options.cache,
+    };
+    if (!lib.isEmpty(options.filter) || lib.isFunction(options.filter)) {
+        opt.filter = options.filter;
+    }
+    if (options.cache) {
+        opt.files = files;
+    }
     /*eslint-disable consistent-return */
-    return staticCache(
-        path.join(app.rootPath || process.env.ROOT_PATH || '', options.dir),
-        {
-            prefix: options.prefix,
-            alias: options.alias,
-            gzip: options.gzip,
-            usePrecompiledGzip: options.usePrecompiledGzip,
-            buffer: options.buffer,
-            filter: options.filter,
-            dynamic: options.cache,
-            maxAge: options.maxAge,
-            preload: options.preload,
-        },
-        files,
-    );
+    return staticCache(opt);
 }
