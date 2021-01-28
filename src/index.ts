@@ -1,8 +1,8 @@
 /*
  * @Author: richen
  * @Date: 2020-12-16 19:51:00
- * @LastEditors: linyyyang<linyyyang@tencent.com>
- * @LastEditTime: 2020-12-17 19:19:46
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-12-24 14:46:03
  * @License: BSD (3-Clause)
  * @Copyright (c) - <richenlin(at)gmail.com>
  */
@@ -13,6 +13,19 @@ import staticCache from "koa-static-cache";
 
 /** @type {*} */
 const files: any = new LRU({ max: 1000 });
+
+/**
+ * Koatty Application
+ *
+ * @export
+ * @interface Application
+ */
+export interface Application {
+    rootPath: string;
+    config(propKey: string, type: string): any;
+    on(event: string, callback: () => void): any;
+    once(event: string, callback: () => void): any;
+}
 
 /**
  *
@@ -48,9 +61,16 @@ const defaultOptions: OptionsInterface = {
     cache: false // dynamic load file which not cached on initialization.
 };
 
-export function Static(options: OptionsInterface, app: any) {
+/**
+ *
+ *
+ * @export
+ * @param {OptionsInterface} options
+ * @param {*} app Koatty instance
+ * @returns {*}  
+ */
+export function KStatic(options: OptionsInterface, app: Application) {
     options = { ...defaultOptions, ...options };
-    // static path
     if (options.dir === '/' || options.dir === '') {
         options.dir = '/static';
     }
