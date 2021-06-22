@@ -2,7 +2,7 @@
  * @Author: richen
  * @Date: 2020-12-16 19:51:00
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-24 14:46:03
+ * @LastEditTime: 2021-06-22 14:18:24
  * @License: BSD (3-Clause)
  * @Copyright (c) - <richenlin(at)gmail.com>
  */
@@ -75,7 +75,7 @@ export function KStatic(options: OptionsInterface, app: Application) {
         options.dir = '/static';
     }
 
-    const opt: any = {
+    const opt: staticCache.Options = {
         dir: path.join(app.rootPath || process.env.ROOT_PATH || '', options.dir),
         prefix: options.prefix,
         alias: options.alias,
