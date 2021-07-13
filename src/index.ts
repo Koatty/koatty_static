@@ -2,7 +2,7 @@
  * @Author: richen
  * @Date: 2020-12-16 19:51:00
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-06-22 14:18:24
+ * @LastEditTime: 2021-07-13 17:22:24
  * @License: BSD (3-Clause)
  * @Copyright (c) - <richenlin(at)gmail.com>
  */
@@ -32,7 +32,7 @@ export interface Application {
  *
  * @interface OptionsInterface
  */
-interface OptionsInterface {
+export interface OptionsInterface {
     dir: string;
     prefix: string;
     alias: any;
@@ -69,7 +69,7 @@ const defaultOptions: OptionsInterface = {
  * @param {*} app Koatty instance
  * @returns {*}  
  */
-export function KStatic(options: OptionsInterface, app: Application) {
+export function Static(options: OptionsInterface, app: Application) {
     options = { ...defaultOptions, ...options };
     if (options.dir === '/' || options.dir === '') {
         options.dir = '/static';
