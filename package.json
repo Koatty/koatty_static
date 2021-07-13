@@ -1,6 +1,6 @@
 {
     "name": "koatty_static",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "description": "Static server Middleware for Koatty.",
     "scripts": {
         "build": "del-cli --force dist && tsc",
