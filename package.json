@@ -1,16 +1,14 @@
 {
     "name": "koatty_static",
-    "version": "1.2.8",
+    "version": "1.2.9",
     "description": "Static server Middleware for Koatty.",
     "scripts": {
         "build": "del-cli --force dist && tsc",
         "eslint": "eslint --ext .ts,.js ./",
         "prepublishOnly": "npm test && npm run build",
+        "prerelease": "npm test && npm run build",
         "release": "npm run prepublishOnly && standard-version",
-        "pub": "git push --follow-tags origin && npm publish",
-        "test": "npm run eslint && jest --passWithNoTests",
-        "test:cov": "jest --collectCoverage --detectOpenHandles",
-        "version": "conventional-changelog -p angular -i CHANGELOG.md -s"
+        "test": "npm run eslint && jest --passWithNoTests"
     },
     "main": "./dist/index.js",
     "repository": {
