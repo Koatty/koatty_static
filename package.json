@@ -69,7 +69,7 @@
     "dependencies": {
         "koa-static-cache": "^5.1.4",
         "koatty_lib": "^1.x.x",
-        "lru-cache": "^7.10.1"
+        "lru-cache": "^7.14.0"
     },
     "husky": {
         "hooks": {
