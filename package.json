@@ -69,11 +69,6 @@
     "dependencies": {
         "koa-static-cache": "^5.1.4",
         "koatty_lib": "^1.x.x",
-        "lru-cache": "^7.14.0"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
+        "lru-cache": "^7.14.1"
     }
 }
