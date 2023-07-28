@@ -6,8 +6,7 @@
     "build": "del-cli --force dist && tsc",
     "eslint": "eslint --ext .ts,.js ./",
     "prepublishOnly": "npm test && npm run build",
-    "prerelease": "npm test && npm run build",
-    "pub": "git push --follow-tags origin && npm publish",
+    "prerelease": "npm test && npm run build && git push --follow-tags",
     "release": "npm run prepublishOnly && standard-version",
     "test": "npm run eslint && jest --passWithNoTests"
   },
