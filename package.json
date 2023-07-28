@@ -1,6 +1,6 @@
 {
   "name": "koatty_static",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "Static server Middleware for Koatty.",
   "scripts": {
     "build": "del-cli --force dist && tsc",
@@ -75,7 +75,7 @@
   "dependencies": {
     "koa-static-cache": "^5.1.4",
     "koatty_lib": "^1.x.x",
-    "lru-cache": "^7.14.1"
+    "lru-cache": "^7.18.3"
   },
   "peerDependencies": {
     "koatty_lib": "^1.x.x"
