@@ -5,6 +5,7 @@
   "scripts": {
     "build": "del-cli --force dist && tsc",
     "eslint": "eslint --ext .ts,.js ./",
+    "lock": "npm i --package-lock-only",
     "prepublishOnly": "npm test && npm run build",
     "prerelease": "npm test && npm run build && git push --follow-tags",
     "release": "npm run prepublishOnly && standard-version",
@@ -74,7 +75,7 @@
   "dependencies": {
     "koa-static-cache": "^5.1.4",
     "koatty_lib": "^1.x.x",
-    "lru-cache": "^7.18.3"
+    "lru-cache": "^10.1.0"
   },
   "peerDependencies": {
     "koatty_lib": "^1.x.x"

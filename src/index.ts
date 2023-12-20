@@ -2,17 +2,18 @@
  * @Author: richen
  * @Date: 2020-12-16 19:51:00
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-07-13 17:22:24
+ * @LastEditTime: 2023-12-20 19:56:04
  * @License: BSD (3-Clause)
  * @Copyright (c) - <richenlin(at)gmail.com>
  */
 import path from "path";
+import { Middleware } from "koa";
 import * as lib from "koatty_lib";
-import LRU from "lru-cache";
+import { LRUCache } from "lru-cache";
 import staticCache from "koa-static-cache";
 
 /** @type {*} */
-const files: any = new LRU({ max: 1000 });
+const files: any = new LRUCache({ max: 1000 });
 
 /**
  * Koatty Application
@@ -69,7 +70,7 @@ const defaultOptions: OptionsInterface = {
  * @param {*} app Koatty instance
  * @returns {*}  
  */
-export function Static(options: OptionsInterface, app: Application) {
+export function KoattyStatic(options: OptionsInterface, app: Application): Middleware {
     options = { ...defaultOptions, ...options };
     if (options.dir === '/' || options.dir === '') {
         options.dir = '/static';
